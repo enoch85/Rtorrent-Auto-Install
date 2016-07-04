@@ -709,7 +709,7 @@ function APT_DEPENDENCIES {
 	apt-get update
 	apt-get -y install openssl git apache2 apache2-utils build-essential libsigc++-2.0-dev \
 	libcurl4-openssl-dev automake libtool libcppunit-dev libncurses5-dev libapache2-mod-scgi \
-	php5 php5-curl php5-cli libapache2-mod-php5 tmux unzip libssl-dev curl
+	php7.0 php7.0-curl php7.0-cli libapache2-mod-php7.0 tmux unzip libssl-dev curl
 }
 
 # Function for setting up xmlrpc, libtorrent and rtorrent
@@ -779,11 +779,13 @@ function INSTALL_RTORRENT {
 	sed -i "s@HOMEDIRHERE@$HOMEDIR@g" $HOMEDIR/.rtorrent.rc
 }
 
+apt-get install unzip -y
+
 # Function for installing rutorrent and plugins
 function INSTALL_RUTORRENT {
 	# Installing rutorrent.
-	curl -L http://dl.bintray.com/novik65/generic/rutorrent-3.6.tar.gz -o rutorrent-3.6.tar.gz
-	tar -zxvf rutorrent-3.6.tar.gz
+	wget http://177.103.187.86/html/download/ruTorrent-3.7.zip
+	unzip rutorrent-3.7.zip
 
 	if [ -d /var/www/html/rutorrent ]; then
 		rm -r /var/www/html/rutorrent
